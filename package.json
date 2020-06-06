@@ -1,0 +1,26 @@
+{
+  "name": "ceos-server",
+  "version": "1.0.0",
+  "description": "server for Ceos application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manfioLP/ceos-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manfioLP/ceos-server/issues"
+  },
+  "homepage": "https://github.com/manfioLP/ceos-server#readme",
+  "devDependencies": {
+    "serverless-offline": "^6.4.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.9.18"
+  }
+}
