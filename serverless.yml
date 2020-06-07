@@ -39,41 +39,45 @@ provider:
 
 functions:
   create:
-    handler: handlers/pacient/create.js
+    handler: handlers/patient/create.create
     events:
       - http:
-          path: pacient
+          path: patient
           method: post
           cors: true
 
   get:
-    handler: handlers/pacient/get.js
+    handler: handlers/patient/get.get
     events:
       - http:
-          path: pacient/{id}
+          path: patient/{id}
           method: get
           cors: true
 
   list:
-    handler: handlers/pacient/list.js
+    handler: handlers/patient/list.list
     events:
       - http:
-          path: pacient
+          path: patient
           method: get
           corst: true
 
   update:
-    handler: handlers/pacient/{id}
+    handler: handlers/patient/update.update
     events:
       - http:
-          path: pacient
-          method: get
+          path: patient/{id}
+          method: put
           cors: true
 
   delete:
-    handler: handlers/pacient/{id}
-    path: pacient/{id}
-    cors: true
+    handler: handlers/patient/delete.delete
+    events:
+      - http:
+          path: patient/{id}
+          method: delete
+          cors: true
+
 
 plugins:
   - serverless-offline # adding so it can be run offline
