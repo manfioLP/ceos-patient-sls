@@ -1,9 +1,9 @@
 'use strict';
 
 const connectToDatabase = require('../../db');
-const { Patient }= require('../../models');
+const { Patient } = require('../../db/models')
 
-const create = (event, context, callback) => {
+module.exports.create = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
@@ -19,8 +19,4 @@ const create = (event, context, callback) => {
           body: 'Could not create the patient.'
         }));
     });
-};
-
-module.exports = {
-  create
 };

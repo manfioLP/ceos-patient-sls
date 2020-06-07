@@ -1,7 +1,7 @@
 'use strict'
 
 const connectToDatabase = require('../../db');
-const { Patient }= require('../../models');
+const { Patient } = require('../../db/models')
 
 module.exports.update = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;

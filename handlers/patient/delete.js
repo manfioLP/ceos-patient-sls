@@ -1,7 +1,7 @@
 'use strict'
 
 const connectToDatabase = require('../../db');
-const { Patient }= require('../../models');
+const { Patient } = require('../../db/models')
 
 module.exports.delete = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
