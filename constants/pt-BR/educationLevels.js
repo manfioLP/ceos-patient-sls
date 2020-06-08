@@ -5,4 +5,5 @@ module.exports = [
   'Pos-grad',
   'Mestrado',
   'Doutorado',
+  'N/A'
 ]

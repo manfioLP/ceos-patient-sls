@@ -3,4 +3,5 @@ module.exports = [
   'São José',
   'Palhoça',
   'Biguaçu',
+  'N/A'
 ]
