@@ -1,8 +1,8 @@
 module.exports = [
-  'Solteiro',
-  'Casado',
-  'Divorciado',
-  'Separado',
-  'Viuvo',
+  'single',
+  'married',
+  'divorced',
+  'split',
+  'widow',
   'N/A'
 ]

@@ -1,9 +1,9 @@
 module.exports = [
-  'Fundamental',
-  'Medio',
-  'Superior',
-  'Pos-grad',
-  'Mestrado',
-  'Doutorado',
+  'primary',
+  'secondary',
+  'grad',
+  'pos-grad',
+  'master',
+  'doctorate',
   'N/A'
 ]
