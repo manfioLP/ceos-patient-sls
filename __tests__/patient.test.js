@@ -1,4 +1,20 @@
-const create = require('../handlers/patient/create');
+const {promisify} = require('util');
+const lambda = require( '../handlers/patient/create');
+const handler = promisify(lambda.create);
+
+// TODO: set environment for jest with mongoose
+
+const context = {
+  "awsRequestId": "ckb8j7s4q0002qjr9azyw2xmv",
+  "callbackWaitsForEmptyEventLoop": true,
+  "clientContext": null,
+  "functionName": "ceos-server-dev-create",
+  "functionVersion": "$LATEST",
+  "invokedFunctionArn": "offline_invokedFunctionArn_for_ceos-server-dev-create",
+  "logGroupName": "offline_logGroupName_for_ceos-server-dev-create",
+  "logStreamName": "offline_logStreamName_for_ceos-server-dev-create",
+  "memoryLimitInMB": "128"
+}
 
 const reqBody = {
   name: 'Test Patient1',
@@ -7,7 +23,7 @@ const reqBody = {
   month: 'january',
   weekday: 'tuesday',
   gender: 'male',
-  education: 'pos-grad',
+  education: 'master',
   educationCompleted: true,
   diabetes: false,
   smoker: true,
@@ -18,7 +34,7 @@ const reqBody = {
   otherComorbidities: 'teste comorbity',
   has: false,
   city: 'Florianópolis',
-  civilStatus: 'Casado',
+  civilStatus: 'married',
   profession: 'Motoboy',
   associatedTraumaInjury: [{
     kind: 'exposta',
@@ -29,23 +45,38 @@ const reqBody = {
   hospitalizationAverageTime: 40
 }
 
-test('Create', () => {
-  test('Default day and month', () => {
-    // to include keys...
-    expect(create(reqBody)).
-  });
+describe('Create', () => {
 
-  reqBody.month = 'january';
-  reqBody.weekday = 'tuesday';
-  reqBody.name= reqBody.name + 2
-  test('Inform day and month', () => {
-    // to include keys...
-    expect(create(reqBody)).
-  });
-
-  reqBody.associatedTraumaInjury.push({kind: 'second trauma'})
-  test('with extra associated trauma', () => {
-    // to include keys...
-    expect(create(reqBody)).
+  test('Default day and month', async () => {
+    const result = await handler({body: JSON.stringify(reqBody)}, context);
+    const patient = JSON.parse(result.body)
+    expect(patient).toHaveProperty('age', 25);
+    expect(patient).toHaveProperty('age', 25);
+    expect(patient).toHaveProperty('age', 25)
+    expect(patient).toHaveProperty('education', 'Mestrado')
+    expect(patient).toHaveProperty('otherComorbidities')
+    expect(patient.associatedTraumaInjury).toHaveLength(1)
   })
+
+  // reqBody.month = 'january';
+  // reqBody.weekday = 'tuesday';
+  // reqBody.name= reqBody.name + 2
+  // test('Inform day and month', () => {
+  //   // to include keys...
+  //   const patient = create.create(reqBody)
+  //   expect(patient).toHaveProperty('age', 25)
+  //   expect(patient).toHaveProperty('education', 'pos-grad')
+  //   expect(patient).toHaveProperty('otherComorbidities')
+  //   expect(patient.associatedTraumaInjury).toHaveLength(1)
+  //   expect(patient).toHaveProperty('month', 'january')
+  //   expect(patient).toHaveProperty('weekday', 'tuesday')
+  // });
+  //
+  // reqBody.associatedTraumaInjury.push({kind: 'second trauma'})
+  // test('with extra associated trauma', () => {
+  //   const patient = create.create(reqBody)
+  //   // to include keys...
+  //   expect(patient).associatedTraumaInjury.toHaveLength(2)
+  // });
+
 });
