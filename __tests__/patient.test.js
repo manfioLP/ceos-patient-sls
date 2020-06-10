@@ -2,6 +2,8 @@ const {promisify} = require('util');
 const lambda = require( '../handlers/patient/create');
 const handler = promisify(lambda.create);
 
+const {closeConnection} = require('../db')
+
 // TODO: set environment for jest with mongoose
 
 const context = {
@@ -47,15 +49,16 @@ const reqBody = {
 
 describe('Create', () => {
 
-  test('Default day and month', async () => {
+  test('Default day and month', async (done) => {
     const result = await handler({body: JSON.stringify(reqBody)}, context);
     const patient = JSON.parse(result.body)
     expect(patient).toHaveProperty('age', 25);
     expect(patient).toHaveProperty('age', 25);
     expect(patient).toHaveProperty('age', 25)
-    expect(patient).toHaveProperty('education', 'Mestrado')
+    expect(patient).toHaveProperty('education', 'master')
     expect(patient).toHaveProperty('otherComorbidities')
     expect(patient.associatedTraumaInjury).toHaveLength(1)
+    done();
   })
 
   // reqBody.month = 'january';
@@ -79,4 +82,8 @@ describe('Create', () => {
   //   expect(patient).associatedTraumaInjury.toHaveLength(2)
   // });
 
+  afterAll(done => {
+    closeConnection();
+    done();
+  })
 });

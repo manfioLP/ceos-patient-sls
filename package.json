@@ -1,5 +1,8 @@
 {
   "name": "ceos-server",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "version": "1.0.0",
   "description": "server for Ceos application",
   "main": "index.js",
