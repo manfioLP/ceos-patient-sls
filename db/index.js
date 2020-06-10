@@ -5,8 +5,9 @@ mongoose.Promise = global.Promise; //
 let isConnected;
 
 require('dotenv').config({path: path.resolve('.env')});
-const connectionString = `mongodb+srv://${process.env.ATLAS_USERNAME}:${process.env.ATLAS_PWD}@cluster0-txkes.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-module.exports = connectToDatabase = () => {
+const connectionString = `mongodb+srv://${process.env.ATLAS_USERNAME}:${process.env.ATLAS_PWD}@cluster0-txkes.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
+const connectToDatabase = () => {
   if (isConnected) {
     console.log('=> using existing database connection');
     return Promise.resolve();
@@ -17,4 +18,14 @@ module.exports = connectToDatabase = () => {
     .then(db => {
       isConnected = db.connections[0].readyState;
     });
+};
+
+const closeConnection = () => {
+  isConnected = false
+  return mongoose.disconnect()
+};
+
+module.exports = {
+  connectToDatabase,
+  closeConnection
 };
