@@ -1,7 +1,7 @@
 'use strict';
 
-const connectToDatabase = require('../../db');
-const { Patient } = require('../../db/models')
+const { connectToDatabase } = require('../../db');
+const { Patient } = require('../../db/models');
 
 const get = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
