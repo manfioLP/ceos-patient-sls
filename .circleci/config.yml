@@ -33,8 +33,9 @@ jobs:
           name: run tests with code coverage
 #          command: npm test --coverage
           command: |
+            cd project
             ls -a ~
-            npm run test:ci
+            npm test --coverage
 
   deploy:
     workind_directory: ~/ceos-sls
