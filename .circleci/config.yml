@@ -29,12 +29,12 @@ jobs:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - abc:
-          command: ls -a ~
       - run:
           name: run tests with code coverage
 #          command: npm test --coverage
-          command: npm run test:ci
+          command: |
+            ls -a ~
+            npm run test:ci
 
   deploy:
     workind_directory: ~/ceos-sls
