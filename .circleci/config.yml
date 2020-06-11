@@ -15,19 +15,19 @@ jobs:
             - dependencies-cache-{{ checksum "package.json" }}
             - dependencies-cache
 
-      run:
-        name: Install Serverless CLI and dependencies
-        command: |
-          sudo npm i -g serverless
-          npm install
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
 
-      run:
-        name: run tests with code coverage
-        command: npm test --coverage
+      - run:
+          name: run tests with code coverage
+          command: npm test --coverage
 
-      run:
-        name: Deploy app
-        command: sls deploy -v
+      - run:
+          name: Deploy app
+          command: sls deploy -v
 
       - save_cache:
           paths:
