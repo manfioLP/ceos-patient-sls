@@ -3,7 +3,13 @@
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coverageReporters": ["json", "lcov", "html", "text"]
+    "coverageReporters": ["json", "lcov", "html", "text"],
+    "coverageThreshold": {
+      "./db/index.js": {
+        "branches": 0,
+        "statements": 0
+      }
+    }
   },
   "version": "1.0.0",
   "description": "server for Ceos application",
