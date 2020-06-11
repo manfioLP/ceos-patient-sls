@@ -21,10 +21,23 @@ jobs:
             sudo npm i -g serverless
             npm install
 
-      - run:
-          name: run tests with code coverage
-          command: npm test --coverage
+  test:
+    workind_directory: ~/ceos-sls
+    docker:
+      - image: circleci/node:10.15
+      steps:
+          - checkout
+          - run:
+              name: run tests with code coverage
+              command: npm test --coverage
 
+  deploy:
+    workind_directory: ~/ceos-sls
+
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
       - run:
           name: Deploy app
           command: sls deploy -v
@@ -33,3 +46,20 @@ jobs:
           paths:
             - node_modules
           key: dependencies-cache-{{ checksum "package.json" }}
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - test:
+        requires:
+          - build
+      -deploy:
+        requires:
+          - test
+        filters:
+          branches:
+            only: master
+
+
