@@ -1,7 +1,9 @@
 {
   "name": "ceos-server",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": ["json", "lcov", "html", "text"]
   },
   "version": "1.0.0",
   "description": "server for Ceos application",
