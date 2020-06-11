@@ -23,7 +23,7 @@ jobs:
 
       - run:
           name: run tests with code coverage
-          command: jest --coverage
+          command: npm test --coverage
 
       - run:
           name: Deploy app
