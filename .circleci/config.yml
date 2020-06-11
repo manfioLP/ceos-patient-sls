@@ -19,12 +19,16 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
 
   test:
-    workind_directory: ~/ceos-sls
     docker:
       - image: circleci/node:10.15
     steps:
+      - checkout
       - run:
           name: run tests with code coverage
           command: yarn test --coverage
