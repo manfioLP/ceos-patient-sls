@@ -4,7 +4,6 @@ jobs:
     workind_directory: ~/ceos-sls
 
     docker:
-      # specify the version you desire here
       - image: circleci/node:10.15
 
     steps:
@@ -25,11 +24,11 @@ jobs:
     workind_directory: ~/ceos-sls
     docker:
       - image: circleci/node:10.15
-      steps:
-          - checkout
-          - run:
-              name: run tests with code coverage
-              command: npm test --coverage
+    steps:
+      - checkout
+      - run:
+          name: run tests with code coverage
+          command: yarn test --coverage
 
   deploy:
     workind_directory: ~/ceos-sls
