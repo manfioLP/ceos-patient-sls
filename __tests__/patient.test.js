@@ -52,24 +52,7 @@ describe('Create', () => {
   test('Default day and month', async (done) => {
     const result = await handler({body: JSON.stringify(reqBody)}, context);
     const patient = JSON.parse(result.body)
-    expect(patient).toHaveProperty('age', 25);
-    expect(patient).toHaveProperty('age', 25);
     expect(patient).toHaveProperty('age', 25)
-    expect(patient).toHaveProperty('education', 'master')
-    expect(patient).toHaveProperty('otherComorbidities')
-    expect(patient.associatedTraumaInjury).toHaveLength(1)
-    done();
-  })
-
-  test('Default day and month', async (done) => {
-    const result = await handler({body: JSON.stringify(reqBody)}, context);
-    const patient = JSON.parse(result.body)
-    expect(patient).toHaveProperty('age', 25);
-    expect(patient).toHaveProperty('age', 25);
-    expect(patient).toHaveProperty('age', 25)
-    expect(patient).toHaveProperty('education', 'master')
-    expect(patient).toHaveProperty('otherComorbidities')
-    expect(patient.associatedTraumaInjury).toHaveLength(10)
     done();
   })
 
