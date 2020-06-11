@@ -11,7 +11,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - dependencies-cache-{{ checksum "package.json" }}
+            - dependencies-cache-{{ checksum "package-lock.json" }}
             - dependencies-cache
 
       - run:
@@ -20,7 +20,7 @@ jobs:
             sudo npm i -g serverless
             npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
 
