@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-and-test:
+  build:
     workind_directory: ~/ceos-sls
 
     docker:
@@ -21,10 +21,12 @@ jobs:
             sudo npm i -g serverless
             npm install
 
+  test:
       - run:
           name: run tests with code coverage
           command: npm test --coverage
 
+  deploy:
       - run:
           name: Deploy app
           command: sls deploy -v
