@@ -33,7 +33,7 @@ jobs:
           name: run tests with code coverage
 #          command: npm test --coverage
           command: |
-            cd project
+            cat project
             ls -a ~
             npm test --coverage
 
