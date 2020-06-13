@@ -45,6 +45,7 @@ jobs:
           name: run tests with code coverage
 #          command: npm test --coverage
           command: |
+            pwd
             ls
             echo "test"
             ls -a ~
