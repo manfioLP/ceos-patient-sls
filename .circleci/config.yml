@@ -19,6 +19,7 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
+            pwd
             ls
             echo "test"
             ls -a ~
@@ -33,6 +34,8 @@ jobs:
 #            -
 
   test:
+    working_directory: ~/ceos-sls
+
     docker:
       - image: circleci/node:10.15
     steps:
