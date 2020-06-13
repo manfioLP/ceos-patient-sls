@@ -12,7 +12,7 @@ jobs:
       - restore_cache:
           keys:
             - dependencies-cache-{{ checksum "package-lock.json" }}
-            - dependencies-cache
+#            - dependencies-cache
 
       - run:
           name: Install Serverless CLI and dependencies
@@ -27,16 +27,20 @@ jobs:
           paths:
             - node_modules
 
-      - persist_to_workspace:
-          root: node_modules
+#      - persist_to_workspace:
+#          root: /home/circleci
+#          paths:
+#            -
 
   test:
     docker:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - attach_workspace:
-          at: /tmp/node_modules
+      - restore_cache:
+          key: dependencies-cache-{{ checksum "package-lock.json" }}
+#      - attach_workspace:
+#          at: /tmp/node_modules
       - run:
           name: run tests with code coverage
 #          command: npm test --coverage
