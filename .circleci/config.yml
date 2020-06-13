@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    workind_directory: ~/ceos-sls
+    working_directory: ~/ceos-sls
 
     docker:
       - image: circleci/node:10.15
