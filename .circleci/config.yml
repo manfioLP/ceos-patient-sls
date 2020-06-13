@@ -68,7 +68,7 @@ jobs:
       - run:
           name: Logs
           command: |
-            pwd
+            cd node_modules
             ls
             echo "mama"
       - run:
