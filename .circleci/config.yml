@@ -10,8 +10,8 @@ jobs:
       - checkout
 
       - restore_cache:
-          keys:
-            - dependencies-cache-{{ checksum "package-lock.json" }}
+          key:
+            -v3-{{ checksum "package-lock.json" }}
 #            - dependencies-cache
 
       - run:
@@ -38,7 +38,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependencies-cache-{{ checksum "package-lock.json" }}
+          key: -v3-{{ checksum "package-lock.json" }}
 #      - attach_workspace:
 #          at: /tmp/node_modules
       - run:
