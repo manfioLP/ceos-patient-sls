@@ -24,16 +24,25 @@ jobs:
           paths:
             - node_modules
 
+      - persist_to_workspace:
+          root: ceos-sls
+          path:
+            - node_modules
+
   test:
     docker:
       - image: circleci/node:10.15
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/node_modules
       - run:
           name: run tests with code coverage
 #          command: npm test --coverage
           command: |
             ls
+#            ls code exactly the same as github, db, jestconfig, serverlerss.yml, handlers etc
+#            but no node_modules, thats why cant run jest
             echo "test"
             ls -a ~
             npm test --coverage
