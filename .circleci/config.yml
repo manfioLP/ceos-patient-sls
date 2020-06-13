@@ -55,12 +55,21 @@ jobs:
             npm test --coverage
 
   deploy:
-    workind_directory: ~/ceos-sls
+    working_directory: ~/ceos-sls
+
 
     docker:
       - image: circleci/node:10.15
 
     steps:
+      - restore_cache:
+            key: -v1-{{ checksum "package-lock.json" }}
+      - run:
+          name: Logs
+          command: |
+            pwd
+            ls
+            echo "mama"
       - run:
           name: Deploy app
           command: sls deploy -v
