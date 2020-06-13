@@ -19,6 +19,9 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
+            ls
+            echo "test"
+            ls -a ~
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
