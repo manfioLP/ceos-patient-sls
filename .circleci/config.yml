@@ -11,7 +11,7 @@ jobs:
 
       - restore_cache:
           key:
-            -v1-{{ checksum "package-lock.json" }}
+            -ceos-sls-{{ checksum "package-lock.json" }}
 #            - dependencies-cache
 
       - run:
@@ -19,14 +19,12 @@ jobs:
           command: |
             npm install
             sudo npm i -g serverless
-            echo "test"
-            npm root -g
             echo "looking for serverless globally"
             cd /usr/local/lib/node_modules
             ls
       - save_cache:
           key:
-            -v1-{{ checksum "package-lock.json" }}
+            -ceos-sls-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
             - /usr/local/lib/node_modules/serverless
@@ -44,7 +42,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: -v1-{{ checksum "package-lock.json" }}
+          key: -ceos-sls-{{ checksum "package-lock.json" }}
 #      - attach_workspace:
 #          at: /tmp/node_modules
       - run:
@@ -67,13 +65,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-            key: -v1-{{ checksum "package-lock.json" }}
+            key: ceos-sls-{{ checksum "package-lock.json" }}
       - run:
           name: Logs
           command: |
             cd node_modules
             ls
             echo "mama"
+            cd ..
+            cd /usr/local/lib/node_modules
+            echo "looking for global packages"
+            ls
       - run:
           name: Deploy app
           command: sls deploy -v
