@@ -18,9 +18,12 @@ jobs:
           name: Install Serverless CLI and dependencies
           command: |
             npm install
-            npm i serverless
+            npm i -g serverless
             echo "test"
             npm root -g
+            echo "looking for serverless globally"
+            cd /usr/local/lib/node_modules
+            ls
       - save_cache:
           key:
             -v1-{{ checksum "package-lock.json" }}
