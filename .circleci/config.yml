@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/v1ceos-sls
+    working_directory: ~/v2ceos-sls
 
     docker:
       - image: circleci/node:10.15
@@ -10,7 +10,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: v1ceos-sls-{{ checksum "package-lock.json" }}
+          key: v2ceos-sls-{{ checksum "package-lock.json" }}
 
       - run:
           name: Install dependencies
@@ -20,10 +20,12 @@ jobs:
             echo "pwd"
             pwd
             echo "... agora indo para o global modules"
-            cd /usr/local/lib/node_modules
+            mv /usr/local/lib/node_modules/serverless ./node_modules
+            cd node_modules
             ls
+            ls | grep serverless
       - save_cache:
-          key: v1ceos-sls-{{ checksum "package-lock.json" }}
+          key: v2ceos-sls-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
 #            - /usr/local/lib/node_modules/serverless
@@ -34,14 +36,14 @@ jobs:
 #            -
 
   test:
-    working_directory: ~/v1ceos-sls
+    working_directory: ~/v2ceos-sls
 
     docker:
       - image: circleci/node:10.15
     steps:
       - checkout
       - restore_cache:
-          key: v1ceos-sls-{{ checksum "package-lock.json" }}
+          key: v2ceos-sls-{{ checksum "package-lock.json" }}
 #      - attach_workspace:
 #          at: /tmp/node_modules
       - run:
@@ -51,7 +53,7 @@ jobs:
             npm test --coverage
 
   deploy:
-    working_directory: ~/v1ceos-sls
+    working_directory: ~/v2ceos-sls
 
     docker:
       - image: circleci/node:10.15
@@ -59,7 +61,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-            key: v1ceos-sls-{{ checksum "package-lock.json" }}
+            key: v2ceos-sls-{{ checksum "package-lock.json" }}
 #      - run:
 #          name: Install Serverless CLI
 #          command: sudo npm i -g serverless
