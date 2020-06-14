@@ -20,7 +20,7 @@ jobs:
             echo "pwd"
             pwd
             echo "... agora indo para o global modules"
-            mv /usr/local/lib/node_modules/serverless ./node_modules
+            sudo mv /usr/local/lib/node_modules/serverless ./node_modules
             cd node_modules
             ls
             ls | grep serverless
