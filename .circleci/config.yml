@@ -13,27 +13,15 @@ jobs:
           key: v2ceos-sls-{{ checksum "package-lock.json" }}
 
       - run:
-          name: Install dependencies
+          name: Install Serverless CLI and dependencies
           command: |
             sudo npm i -g serverless
             npm install
-            echo "pwd"
-            pwd
-            echo "... agora indo para o global modules"
             sudo mv /usr/local/lib/node_modules/serverless ./node_modules
-            cd node_modules
-            ls
-            ls | grep serverless
       - save_cache:
           key: v2ceos-sls-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-#            - /usr/local/lib/node_modules/serverless
-
-#      - persist_to_workspace:
-#          root: /home/circleci
-#          paths:
-#            -
 
   test:
     working_directory: ~/v2ceos-sls
@@ -44,11 +32,9 @@ jobs:
       - checkout
       - restore_cache:
           key: v2ceos-sls-{{ checksum "package-lock.json" }}
-#      - attach_workspace:
-#          at: /tmp/node_modules
+
       - run:
           name: run tests with code coverage
-#          command: npm test --coverage
           command: |
             npm test --coverage
 
@@ -62,20 +48,13 @@ jobs:
       - checkout
       - restore_cache:
             key: v2ceos-sls-{{ checksum "package-lock.json" }}
-#      - run:
-#          name: Install Serverless CLI
-#          command: sudo npm i -g serverless
 
       - run:
-          name: Logs
+          name: logs
           command: |
             cd node_modules
             ls
-            echo "mama"
-            cd ..
-            cd /usr/local/lib/node_modules
-            echo "looking for global packages"
-            ls
+            ls | grep serverless
       - run:
           name: Deploy app
           command: sls deploy -v
