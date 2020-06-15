@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/v2ceos-sls
+    working_directory: ~/v1-ceos-sls
 
     docker:
       - image: circleci/node:10.15
@@ -10,28 +10,26 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: v2ceos-sls-{{ checksum "package-lock.json" }}
+          key: v1-ceos-sls-{{ checksum "package-lock.json" }}
 
       - run:
-          name: Install Serverless CLI and dependencies
+          name: Install dependencies
           command: |
-            sudo npm i -g serverless
             npm install
-            sudo mv /usr/local/lib/node_modules/serverless ./node_modules
       - save_cache:
-          key: v2ceos-sls-{{ checksum "package-lock.json" }}
+          key: v1-ceos-sls-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
 
   test:
-    working_directory: ~/v2ceos-sls
+    working_directory: ~/v1-ceos-sls
 
     docker:
       - image: circleci/node:10.15
     steps:
       - checkout
       - restore_cache:
-          key: v2ceos-sls-{{ checksum "package-lock.json" }}
+          key: v1-ceos-sls-{{ checksum "package-lock.json" }}
 
       - run:
           name: run tests with code coverage
@@ -39,7 +37,7 @@ jobs:
             npm test --coverage
 
   deploy:
-    working_directory: ~/v2ceos-sls
+    working_directory: ~/v1-ceos-sls
 
     docker:
       - image: circleci/node:10.15
@@ -47,14 +45,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-            key: v2ceos-sls-{{ checksum "package-lock.json" }}
+            key: v1-ceos-sls-{{ checksum "package-lock.json" }}
 
       - run:
-          name: logs
+          name: Install Serverless CLI
           command: |
-            cd node_modules
-            ls
-            ls | grep serverless
+            sudo npm i -g serverless
+
       - run:
           name: Deploy app
           command: sls deploy -v
@@ -75,8 +72,8 @@ workflows:
       - deploy:
           requires:
             - test
-#        filters:
-#          branches:
-#            only: master
+        filters:
+          branches:
+            only: master
 
 
