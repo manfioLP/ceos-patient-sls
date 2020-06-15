@@ -120,6 +120,9 @@ const PatientSchema = new mongoose.Schema({
   hospitalizationAverageTime: {
     type: Number,
     default: 0
-  }
+  },
+  fractures: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'ExposedFracture'
+  }]
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
