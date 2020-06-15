@@ -16,6 +16,7 @@ jobs:
           name: Install dependencies
           command: |
             npm install
+
       - save_cache:
           key: v1-ceos-sls-{{ checksum "package-lock.json" }}
           paths:
@@ -72,8 +73,8 @@ workflows:
       - deploy:
           requires:
             - test
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
 
 
