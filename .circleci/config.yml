@@ -52,7 +52,7 @@ jobs:
           name: Install Serverless CLI
           command: |
             npm i --save-dev serverless
-            sudo npm i -g serverless
+#            sudo npm i -g serverless
 
       - run:
           name: Deploy app
