@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "mongoose": "^5.9.18",
+    "mongoose": "^5.9.19",
     "path": "^0.12.7",
     "promisify": "0.0.3"
   }
