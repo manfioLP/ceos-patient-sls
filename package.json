@@ -1,9 +1,8 @@
 {
-  "name": "ceos-server",
+  "name": "ceos-patient-service",
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coverageReporters": ["json", "lcov", "html", "text"],
     "coverageThreshold": {
       "./db/index.js": {
         "branches": 0,
@@ -12,11 +11,11 @@
     }
   },
   "version": "1.0.0",
-  "description": "server for Ceos application",
+  "description": "patient service for Ceos application",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:ci":"jest --ci --runInBand --reporters=default --reporters=jest-junit"
+    "test:ci": "jest --ci --runInBand --reporters=default --reporters=jest-junit"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-service: ceos-server
+service: ceos-patient
 
 provider:
   name: aws

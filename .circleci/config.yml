@@ -51,6 +51,7 @@ jobs:
       - run:
           name: Install Serverless CLI
           command: |
+            sudo chown -R $USER /usr/local/lib
             sudo npm i -g serverless
 
       - run:

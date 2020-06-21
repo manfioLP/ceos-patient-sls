@@ -8,7 +8,8 @@ module.exports.update = (event, context, callback) => {
 
   connectToDatabase()
     .then(() => {
-      Patient.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body), { new: true })
+      Patient.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body),
+        { new: true, runValidators: true  })
         .then(patient => callback(null, {
           statusCode: 200,
           body: JSON.stringify(patient)
