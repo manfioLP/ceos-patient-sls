@@ -55,6 +55,15 @@ jobs:
 #            sudo npm i -g serverless
 
       - run:
+          name: Retrieve environment variables
+            command: |
+              touch .env
+              echo "ATLAS_PWD=${ATLAS_PWD}" >> .env
+              echo "ATLAS_USERNAME=${ATLAS_USERNAME}" >> .env
+              echo "LOCALE=${LOCALE}" >> .env
+              echo "DB_NAME=${DB_NAME}" >> .env
+
+      - run:
           name: Deploy app
           command: sls deploy -v
 
