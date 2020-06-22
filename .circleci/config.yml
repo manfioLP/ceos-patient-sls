@@ -51,7 +51,9 @@ jobs:
       - run:
           name: Install Serverless CLI
           command: |
-            sudo npm i -g serverless
+#            npm install --silent --progress=false -g --unsafe-perm serverles
+            sudo npm install -g --unsafe-perm serverles
+#            sudo npm i -g serverless
 
       - run:
           name: Deploy app
