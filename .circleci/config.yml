@@ -52,7 +52,6 @@ jobs:
           name: Install Serverless CLI
           command: |
             sudo npm install -g --unsafe-perm serverless
-#            sudo npm i -g serverless
 
       - run:
           name: Retrieve environment variables
