@@ -11,7 +11,10 @@ const list = (event, context, callback) => {
       Patient.find()
         .then(patient => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(patient)
+          body: JSON.stringify(patient),
+          headers: {
+            "Access-Control-Allow-Origin" : "*"
+          }
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
