@@ -13,7 +13,8 @@ const list = (event, context, callback) => {
           statusCode: 200,
           body: JSON.stringify(patient),
           headers: {
-            "Access-Control-Allow-Origin" : "*"
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
           }
         }))
         .catch(err => callback(null, {
