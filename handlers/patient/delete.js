@@ -11,7 +11,11 @@ module.exports.delete = (event, context, callback) => {
       Patient.findByIdAndRemove(event.pathParameters.id)
         .then(patient => callback(null, {
           statusCode: 200,
-          body: JSON.stringify({ message: 'Removed patient with id: ' + patient._id, patient })
+          body: JSON.stringify({ message: 'Removed patient with id: ' + patient._id, patient }),
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          }
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,

@@ -12,7 +12,11 @@ module.exports.update = (event, context, callback) => {
         { new: true, runValidators: true  })
         .then(patient => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(patient)
+          body: JSON.stringify(patient),
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          }
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,

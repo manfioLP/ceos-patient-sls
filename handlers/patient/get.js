@@ -11,7 +11,11 @@ const get = (event, context, callback) => {
       Patient.findById(event.pathParameters.id)
         .then(patient => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(patient)
+          body: JSON.stringify(patient),
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+          }
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
