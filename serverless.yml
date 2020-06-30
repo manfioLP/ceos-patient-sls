@@ -57,7 +57,7 @@ functions:
       - http:
           path: patient
           method: get
-          corst: true
+          cors: true
 
   update:
     handler: handlers/patient/update.update
