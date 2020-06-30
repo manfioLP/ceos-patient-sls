@@ -11,14 +11,21 @@ const list = (event, context, callback) => {
   connectToDatabase()
     .then(() => {
       Patient.find().limit(lm).skip(skip)
-        .then(patient => callback(null, {
-          statusCode: 200,
-          body: JSON.stringify(patient),
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': true,
+        .then(patients => {
+          const response = {
+            page,
+            perPage: limit,
+            data: patients
           }
-        }))
+          callback(null, {
+            statusCode: 200,
+            body: JSON.stringify(response),
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credentials': true,
+            }
+          })
+        })
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
