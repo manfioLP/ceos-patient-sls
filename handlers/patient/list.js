@@ -6,9 +6,11 @@ const { Patient } = require('../../db/models');
 const list = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
+  const {page=1, limit=10, skip=page*limit, lm=+limit} = { ...event.queryStringParameters }
+
   connectToDatabase()
     .then(() => {
-      Patient.find()
+      Patient.find().limit(lm).skip(skip)
         .then(patient => callback(null, {
           statusCode: 200,
           body: JSON.stringify(patient),
