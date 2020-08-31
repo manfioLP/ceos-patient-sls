@@ -97,16 +97,11 @@ const PatientSchema = new mongoose.Schema({
     trim: true
   },
   // TODO: remove _id from associatedTraumaInjury
-  associatedTraumaInjury: [{
-    kind: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    bone: {
-      type: String,
-    }
-  }],
+  associatedTraumaInjury: {
+    type: String,
+    default: 'N/I',
+    trim: true
+  },
   antibioticAtEmergency: {
     type: String,
     default: 'N/I',
