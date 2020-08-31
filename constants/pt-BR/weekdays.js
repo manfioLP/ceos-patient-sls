@@ -1,10 +1,9 @@
 module.exports = [
-  'sunday',
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'DEFAULT_WEEKDAY_ERROR'
+    'Segunda',
+    'Terça ',
+    'Quarta',
+    'Quinta',
+    'Sexta',
+    'Sabado',
+    'Domingo'
 ];

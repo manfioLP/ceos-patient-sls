@@ -1,5 +1,5 @@
 module.exports = [
-  'male',
-  'female',
-  'N/A'
+  'Masculino',
+  'Feminino',
+  'N/I'
 ];

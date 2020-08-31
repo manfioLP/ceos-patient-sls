@@ -29,7 +29,6 @@ function getImportPath(file) {
 const educationLevels = require(getImportPath('educationLevels'))
 const weekdays = require(getImportPath('weekdays'))
 const genders = require(getImportPath('genders'))
-const patientCities = require(getImportPath('patientCities'))
 const months = require(getImportPath('months'))
 const civilStatus = require(getImportPath('civilStatus'))
 
@@ -45,7 +44,6 @@ module.exports = {
   weekdays,
   educationLevels,
   genders,
-  patientCities,
   months,
   civilStatus,
 };

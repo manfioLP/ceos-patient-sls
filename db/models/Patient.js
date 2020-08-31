@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // const { patientErrors } = require('../errors');
 const { defaultWeekday, defaultMonth } = require('../helper');
-const {educationLevels, genders, weekdays, patientCities, civilStatus} = require('../../constants');
+const {educationLevels, genders, weekdays, civilStatus} = require('../../constants');
 
 // TODO: verify need of Data (em numeral): digitar (xx/xx/xxxx)
 // TODO: verify need of Horário de admissão: digitar
@@ -34,13 +34,13 @@ const PatientSchema = new mongoose.Schema({
   gender: {
     type: String,
     enum: genders,
-    default: 'N/A',
+    default: 'N/I',
     trim: true
   },
   education: {
     type: String,
     enum: educationLevels,
-    default: 'N/A',
+    default: 'N/I',
     trim: true
   },
   educationCompleted: {
@@ -49,42 +49,41 @@ const PatientSchema = new mongoose.Schema({
   diabetes: {
     type: Boolean,
     // type: Boolean | String,
-    // default: 'N/A'
+    // default: 'N/I'
   },
   smoker: {
     type: Boolean,
-    // default: 'N/A'
+    // default: 'N/I'
   },
   ethylista: {
     type: Boolean,
-    // default: 'N/A'
+    // default: 'N/I'
   },
   infection: {
     type: Boolean,
-    // default: 'N/A'
+    // default: 'N/I'
   },
   amputation: {
     type: Boolean,
-    // default: 'N/A'
+    // default: 'N/I'
   },
   // TODO: verify comorbidities and otherComorbidities
   comorbidities: {
     type: Boolean,
-    // default: 'N/A',
+    // default: 'N/I',
     // trim: true
   },
   otherComorbidities: {
     type: String,
-    // default: 'N/A'
+    // default: 'N/I'
   },
   has: {
     type: Boolean,
-    // default: 'N/A',
+    // default: 'N/I',
   },
   city: {
     type: String,
-    enum: patientCities,
-    default: 'N/A',
+    default: 'N/I',
     trim: true
   },
   civilStatus: {
@@ -94,7 +93,7 @@ const PatientSchema = new mongoose.Schema({
   },
   profession: {
     type: String,
-    default: 'N/A',
+    default: 'N/I',
     trim: true
   },
   // TODO: remove _id from associatedTraumaInjury
@@ -110,7 +109,7 @@ const PatientSchema = new mongoose.Schema({
   }],
   antibioticAtEmergency: {
     type: String,
-    default: 'N/A',
+    default: 'N/I',
     trim: true
   },
   exposureTime: {
