@@ -5,10 +5,11 @@ const { Patient } = require('../../db/models');
 
 module.exports.create = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
-
+  const patientBody = JSON.parse(event.body);
+  const identifier = `${patientBody.recordNumber}@${patientBody.date}`
   connectToDatabase()
     .then(() => {
-      Patient.create(JSON.parse(event.body))
+      Patient.create({...patientBody, identifier})
         .then(patient => callback(null, {
           statusCode: 200,
           body: JSON.stringify(patient),

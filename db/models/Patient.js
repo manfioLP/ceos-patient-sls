@@ -6,6 +6,12 @@ const {educationLevels, genders, weekdays, civilStatus} = require('../../constan
 // TODO: verify need of Data (em numeral): digitar (xx/xx/xxxx)
 // TODO: verify need of Horário de admissão: digitar
 const PatientSchema = new mongoose.Schema({
+  identifier: {
+    type: String,
+    trim: true,
+    required: [true, 'identifier is required, if you are reading this it\'s likely a error on setting body of server create lambda'],
+    unique: true
+  },
   name: {
     type: String,
     default: 'N/A',
