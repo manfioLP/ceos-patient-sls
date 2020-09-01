@@ -40,7 +40,6 @@ const PatientSchema = new mongoose.Schema({
   education: {
     type: String,
     enum: educationLevels,
-    default: 'N/I',
     trim: true
   },
   educationCompleted: {
