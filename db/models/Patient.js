@@ -93,7 +93,7 @@ const PatientSchema = new mongoose.Schema({
   },
   civilStatus: {
     type: String,
-    enum: civilStatus,
+    default: 'N/I',
     trim: true
   },
   profession: {
