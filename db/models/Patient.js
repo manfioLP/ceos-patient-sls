@@ -64,15 +64,6 @@ const PatientSchema = new mongoose.Schema({
     type: Boolean,
     // default: 'N/I'
   },
-  infection: {
-    type: Boolean,
-    // default: 'N/I'
-  },
-  amputation: {
-    type: Boolean,
-    // default: 'N/I'
-  },
-  // TODO: verify comorbidities and otherComorbidities
   comorbidities: {
     type: Boolean,
     // default: 'N/I',
