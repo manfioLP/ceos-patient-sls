@@ -41,7 +41,8 @@ const reqBody = {
   associatedTraumaInjury: 'Qualquer um ai',
   antibioticAtEmergency: 'amoxicilina',
   exposureTime: 5.5,
-  hospitalizationAverageTime: 40
+  hospitalizationAverageTime: 40,
+  admissionDate: new Date()
 }
 
 describe('Create', () => {
