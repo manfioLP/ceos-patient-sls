@@ -18,10 +18,11 @@ const context = {
   "memoryLimitInMB": "128"
 }
 
+const recordNumber = new Date().getTime();
 const reqBody = {
   name: 'Test Patient1',
   age: 25,
-  recordNumber: '123456',
+  recordNumber: recordNumber.toString(),
   month: 'Janeiro',
   weekday: 'Quinta',
   gender: 'Masculino',
