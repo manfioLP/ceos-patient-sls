@@ -43,7 +43,6 @@ const PatientSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: genders,
     default: 'N/I',
     trim: true
   },
