@@ -124,6 +124,21 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     default: 'N/I',
     trim: true,
+  },
+  ageCategory: {
+    type: String,
+    default: 'N/I',
+    trim: true
+  },
+  admissionHourCategory: {
+    type: String,
+    default: 'N/I',
+    trim: true
+  },
+  exposureTimeCategory: {
+    type: String,
+    default: 'N/I',
+    trim: true
   }
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
