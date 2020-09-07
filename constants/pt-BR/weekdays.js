@@ -1,6 +1,6 @@
 module.exports = [
     'Segunda',
-    'Terça ',
+    'Terça',
     'Quarta',
     'Quinta',
     'Sexta',
