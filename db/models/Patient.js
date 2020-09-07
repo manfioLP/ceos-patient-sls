@@ -119,6 +119,11 @@ const PatientSchema = new mongoose.Schema({
     default: 'N/I',
     trim: true,
     enum: race
+  },
+  admissionHour: {
+    type: String,
+    default: 'N/I',
+    trim: true,
   }
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
