@@ -37,7 +37,7 @@ const PatientSchema = new mongoose.Schema({
   },
   weekday: {
     type: String,
-    enum: weekdays,
+    // enum: weekdays,
     default: defaultWeekday(new Date().getDay()),
     trim: true
   },
