@@ -31,6 +31,7 @@ const weekdays = require(getImportPath('weekdays'))
 const genders = require(getImportPath('genders'))
 const months = require(getImportPath('months'))
 const civilStatus = require(getImportPath('civilStatus'))
+const race = require(getImportPath('race'))
 
 
 //      STATIC IMPORT      //
@@ -46,4 +47,5 @@ module.exports = {
   genders,
   months,
   civilStatus,
+  race
 };

@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 // const { patientErrors } = require('../errors');
 const { defaultWeekday, defaultMonth } = require('../helper');
-const {educationLevels, genders, weekdays, civilStatus} = require('../../constants');
+const {educationLevels, genders, weekdays, race} = require('../../constants');
 
 // TODO: verify need of Data (em numeral): digitar (xx/xx/xxxx)
 // TODO: verify need of Horário de admissão: digitar
 const PatientSchema = new mongoose.Schema({
+  admissionDate: {
+    type: Date,
+    required: [true, 'Data de internacao eh obrigatoria!']
+  },
   identifier: {
     type: String,
     trim: true,
@@ -110,6 +114,12 @@ const PatientSchema = new mongoose.Schema({
   hospitalizationAverageTime: {
     type: Number,
     default: 0
+  },
+  race: {
+    type: String,
+    default: 'N/I',
+    trim: true,
+    enum: race
   }
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
