@@ -107,8 +107,8 @@ const PatientSchema = new mongoose.Schema({
     trim: true
   },
   exposureTime: {
-    type: Number,
-    default:0
+    type: String,
+    default: 'N/I'
   },
   hospitalizationAverageTime: {
     type: Number,
