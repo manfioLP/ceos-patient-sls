@@ -48,10 +48,10 @@ const PatientSchema = new mongoose.Schema({
   },
   education: {
     type: String,
-    enum: educationLevels,
+    // enum: educationLevels,
     trim: true
   },
-  educationCompleted: {
+  death: {
     type: Boolean,
   },
   diabetes: {
