@@ -99,6 +99,10 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     trim: true
   }],
+  associatedTraumaInjuryOther: {
+    type: String,
+    trim: true
+  },
   antibioticAtEmergency: {
     type: String,
     default: 'N/I',
