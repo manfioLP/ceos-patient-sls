@@ -137,6 +137,10 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     default: 'N/I',
     trim: true
+  },
+  associatedClosedFractureDescription: {
+    type: String,
+    trim: true
   }
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
