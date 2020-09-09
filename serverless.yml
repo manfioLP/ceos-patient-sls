@@ -75,6 +75,14 @@ functions:
           method: delete
           cors: true
 
+  listAll:
+    handler: handlers/patient/listAll.listAll
+    events:
+      - http:
+          path: patient/export
+          method: get
+          cors: true
+
 
 plugins:
   - serverless-offline # adding so it can be run offline

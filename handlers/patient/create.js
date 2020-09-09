@@ -19,10 +19,16 @@ module.exports.create = (event, context, callback) => {
             'Access-Control-Allow-Credentials': true,
           }
         }))
-        .catch(err => callback(null, {
-          statusCode: err.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify({msg:'Could not create the patient.', err})
-        }));
+        .catch(err => {
+          if (err.code.toString() === '11000') {
+            err.message = err.message ? err.message : `Paciente com Identificador unico ${identifier} ja existente! \n 
+              O identificador unico eh feito pelo numero de prontuario + data`;
+          }
+          callback(null, {
+            statusCode: err.statusCode || 500,
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify({msg:'Could not create the patient.', err})
+          })
+        });
     });
 };
