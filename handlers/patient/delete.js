@@ -6,6 +6,8 @@ const { Patient } = require('../../db/models');
 module.exports.delete = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
+  console.log('performing operation [get] , req path params: ', event.pathParameters.id)
+
   connectToDatabase()
     .then(() => {
       Patient.findByIdAndRemove(event.pathParameters.id)

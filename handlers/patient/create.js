@@ -7,7 +7,8 @@ module.exports.create = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const patientBody = JSON.parse(event.body);
   const date = patientBody.date;
-  const identifier = `${patientBody.recordNumber}@${date}`;
+  const identifier = `${patientBody.recordNumber}@${date}-${patientBody.month}`;
+  console.log('performing operation [CREATE] , req body: ', patientBody)
   connectToDatabase()
     .then(() => {
       Patient.create({...patientBody, identifier})

@@ -8,6 +8,8 @@ const list = (event, context, callback) => {
 
   const {page=1, limit=10, skip=page*limit, lm=+limit} = { ...event.queryStringParameters }
 
+  console.log('performing operation [LIST] , req params: ', event.queryStringParameters)
+
   connectToDatabase()
     .then(() => {
       Patient.find().limit(lm).skip(skip)

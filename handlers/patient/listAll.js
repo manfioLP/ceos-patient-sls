@@ -6,6 +6,8 @@ const { Patient } = require('../../db/models');
 const listAll = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
+  console.log('performing operation [LIST ALL]')
+
   connectToDatabase()
     .then(() => {
       Patient.find()
