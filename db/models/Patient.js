@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
-// const { patientErrors } = require('../errors');
 const { defaultWeekday, defaultMonth } = require('../helper');
-const {educationLevels, genders, weekdays, race} = require('../../constants');
 
-// TODO: verify need of Data (em numeral): digitar (xx/xx/xxxx)
-// TODO: verify need of Horário de admissão: digitar
 const PatientSchema = new mongoose.Schema({
   admissionDate: {
     type: Date,
@@ -48,37 +44,37 @@ const PatientSchema = new mongoose.Schema({
   },
   education: {
     type: String,
-    // enum: educationLevels,
+    required: [true, 'Eh necessario informar a educacao do paciente!'],
     trim: true
   },
   death: {
     type: Boolean,
+    default: false
   },
   diabetes: {
     type: Boolean,
-    // type: Boolean | String,
-    // default: 'N/I'
+    default: false
   },
   smoker: {
     type: Boolean,
-    // default: 'N/I'
+    default: false
   },
   ethylista: {
     type: Boolean,
-    // default: 'N/I'
+    default: false
   },
   comorbidities: {
     type: Boolean,
-    // default: 'N/I',
-    // trim: true
+    default: false
   },
   otherComorbidities: {
     type: String,
+    default: ''
     // default: 'N/I'
   },
   has: {
     type: Boolean,
-    // default: 'N/I',
+    default: false
   },
   city: {
     type: String,
@@ -120,7 +116,6 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     default: 'N/I',
     trim: true,
-    enum: race
   },
   admissionHour: {
     type: String,
