@@ -82,12 +82,12 @@ const PatientSchema = new mongoose.Schema({
   },
   city: {
     type: String,
-    default: 'N/I',
+    required: [true, 'Precisa Obrigatoriamente informar a cidade! \n se nao sabe qual eh a cidade usa o campo Outro.'],
     trim: true
   },
   civilStatus: {
     type: String,
-    default: 'N/I',
+    required: [true, 'Precisa Obrigatoriamente informar o estado civil! \n se nao sabe qual eh a cidade usa o campo Outro.'],
     trim: true
   },
   profession: {
