@@ -14,7 +14,7 @@ const PatientSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    default: 'N/A',
+    default: '',
     trim: true
   },
   age: {
@@ -39,7 +39,7 @@ const PatientSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true
   },
   education: {
@@ -70,7 +70,7 @@ const PatientSchema = new mongoose.Schema({
   otherComorbidities: {
     type: String,
     default: ''
-    // default: 'N/I'
+    // default: ''
   },
   has: {
     type: Boolean,
@@ -92,7 +92,7 @@ const PatientSchema = new mongoose.Schema({
   },
   profession: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true
   },
   associatedTraumaInjury: {
@@ -105,7 +105,7 @@ const PatientSchema = new mongoose.Schema({
   },
   antibioticAtEmergency: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true
   },
   antibioticAtEmergencyOther: {
@@ -114,7 +114,7 @@ const PatientSchema = new mongoose.Schema({
   },
   exposureTime: {
     type: String,
-    default: 'N/I'
+    default: ''
   },
   hospitalizationAverageTime: {
     type: Number,
@@ -122,27 +122,27 @@ const PatientSchema = new mongoose.Schema({
   },
   race: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true,
   },
   traumaHour: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true,
   },
   ageCategory: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true
   },
   traumaHourCategory: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true
   },
   exposureTimeCategory: {
     type: String,
-    default: 'N/I',
+    default: '',
     trim: true
   },
   associatedClosedFractureDescription: {
