@@ -121,7 +121,7 @@ const PatientSchema = new mongoose.Schema({
     default: 'N/I',
     trim: true,
   },
-  admissionHour: {
+  traumaHour: {
     type: String,
     default: 'N/I',
     trim: true,
@@ -131,7 +131,7 @@ const PatientSchema = new mongoose.Schema({
     default: 'N/I',
     trim: true
   },
-  admissionHourCategory: {
+  traumaHourCategory: {
     type: String,
     default: 'N/I',
     trim: true
