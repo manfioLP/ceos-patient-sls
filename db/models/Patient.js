@@ -91,10 +91,10 @@ const PatientSchema = new mongoose.Schema({
     default: 'N/I',
     trim: true
   },
-  associatedTraumaInjury: [{
+  associatedTraumaInjury: {
     type: String,
     trim: true
-  }],
+  },
   associatedTraumaInjuryOther: {
     type: String,
     trim: true
