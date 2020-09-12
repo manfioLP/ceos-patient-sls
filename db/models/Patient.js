@@ -76,6 +76,10 @@ const PatientSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  drugs: {
+    type: Boolean,
+    default: false
+  },
   city: {
     type: String,
     default: 'N/I',
