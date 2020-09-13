@@ -21,7 +21,7 @@ module.exports.create = (event, context, callback) => {
           }
         }))
         .catch(err => {
-          if (err.code.toString() === '11000') {
+          if (err.code && err.code.toString() === '11000') {
             err.message = err.message ? err.message : `Paciente com Identificador unico ${identifier} ja existente! \n 
               O identificador unico eh feito pelo numero de prontuario + data`;
           }
