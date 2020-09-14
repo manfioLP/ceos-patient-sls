@@ -152,6 +152,9 @@ const PatientSchema = new mongoose.Schema({
   complications: {
     type: String,
     trim: true
+  },
+  fracturesNumber: {
+    type: String
   }
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
