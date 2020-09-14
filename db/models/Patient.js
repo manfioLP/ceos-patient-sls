@@ -155,6 +155,14 @@ const PatientSchema = new mongoose.Schema({
   },
   fracturesNumber: {
     type: String
-  }
+  },
+	admissionTimeCCCategory: {
+		type: String,
+		trim: true
+	},
+	admissionTimeCC: {
+		type: String,
+		trim: true
+	}
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
