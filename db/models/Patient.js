@@ -92,7 +92,7 @@ const PatientSchema = new mongoose.Schema({
   },
   profession: {
     type: String,
-    default: '',
+    required: [true, 'Precisa Obrigatoriamente informar a Profissao! \n se nao sabe qual eh a cidade usa o campo Outro.'],
     trim: true
   },
   associatedTraumaInjury: {
@@ -127,7 +127,7 @@ const PatientSchema = new mongoose.Schema({
   },
   traumaHour: {
     type: String,
-    default: '',
+    required: [true, 'Horario do trauma eh obrigatorio!'],
     trim: true,
   },
   ageCategory: {
@@ -137,8 +137,8 @@ const PatientSchema = new mongoose.Schema({
   },
   traumaHourCategory: {
     type: String,
-    default: '',
     trim: true
+    required: [true, 'Horario do trauma eh obrigatorio!'],
   },
   exposureTimeCategory: {
     type: String,
@@ -156,5 +156,15 @@ const PatientSchema = new mongoose.Schema({
   fracturesNumber: {
     type: String
   },
+  admissionHourCC: {
+    type: String,
+    required: [true, 'Tempo de admissao CC eh obrigatorio!'],
+    trim: true
+  },
+  admissionHourCCCategory: {
+    type: String,
+    required: [true, 'Categorizar Tempo de admissao CC eh obrigatorio!'],
+    trim: true
+  }
 }, { timestamps: true });
 module.exports = mongoose.model('Patient', PatientSchema);
