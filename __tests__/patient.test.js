@@ -43,7 +43,11 @@ const reqBody = {
   antibioticAtEmergency: 'amoxicilina',
   exposureTime: 5.5,
   hospitalizationAverageTime: 40,
-  admissionDate: new Date()
+  admissionDate: new Date(),
+  admissionHourCC: 'teste teste',
+  admissionHourCCCategory: 'teste teste',
+  traumaHourCategory: 'teste teste',
+  traumaHour: 'teste teste',
 }
 
 describe('Create', () => {
