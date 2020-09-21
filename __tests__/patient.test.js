@@ -48,6 +48,7 @@ const reqBody = {
   admissionHourCCCategory: 'teste teste',
   traumaHourCategory: 'teste teste',
   traumaHour: 'teste teste',
+  fracturesNumber: 'teste teste',
 }
 
 describe('Create', () => {
