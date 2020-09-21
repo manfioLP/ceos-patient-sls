@@ -6,12 +6,14 @@ const { Patient } = require('../../db/models');
 module.exports.update = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  console.log('performing operation [get] , req path params: ', event.pathParameters.id);
+  console.log('performing operation [put] , req path params: ', event.pathParameters.id);
   console.log('req body...', event.body);
 
   connectToDatabase()
     .then(() => {
-      Patient.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body),
+      Patient.findOneAndUpdate(
+        {identifier: event.pathParameters.id},
+        JSON.parse(event.body),
         { new: true, runValidators: true  })
         .then(patient => callback(null, {
           statusCode: 200,
