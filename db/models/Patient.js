@@ -154,7 +154,8 @@ const PatientSchema = new mongoose.Schema({
     trim: true
   },
   fracturesNumber: {
-    type: String
+    type: String,
+    required: [true, 'Numero de fraturas eh obrigatorio!']
   },
   admissionHourCC: {
     type: String,
