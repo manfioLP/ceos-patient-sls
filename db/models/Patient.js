@@ -137,7 +137,7 @@ const PatientSchema = new mongoose.Schema({
   },
   traumaHourCategory: {
     type: String,
-    trim: true
+    trim: true,
     required: [true, 'Horario do trauma eh obrigatorio!'],
   },
   exposureTimeCategory: {
