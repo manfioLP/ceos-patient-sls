@@ -9,10 +9,13 @@ module.exports.update = (event, context, callback) => {
   console.log('performing operation [put] , req path params: ', event.pathParameters.id);
   console.log('req body...', event.body);
 
+  const splited = event.pathParameters.id.split(')')
+  const parsedId = `${splited[0]}) ${splited[1]}`
+
   connectToDatabase()
     .then(() => {
       Patient.findOneAndUpdate(
-        {identifier: event.pathParameters.id},
+        {identifier: parsedId},
         JSON.parse(event.body),
         { new: true, runValidators: true  })
         .then(patient => callback(null, {
